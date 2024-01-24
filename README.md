@@ -1,7 +1,9 @@
 ## Information
 
 Name: Nguyễn Xuân Long
+
 ID: 20075751
+
 Subject: Kiến trúc và Thiết kế phần mềm
 
 #### Description
