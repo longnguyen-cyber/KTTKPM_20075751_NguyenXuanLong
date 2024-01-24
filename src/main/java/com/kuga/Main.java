@@ -9,14 +9,19 @@ import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
 import com.kuga.common.IteratorFile;
+import com.kuga.common.Reflection;
 import com.kuga.consts.IConstant;
+import com.kuga.models.Account;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         //Câu 1
 //        processFile();
         //Câu 2
-		processFolder();
+//		processFolder();
+        //Câu 3
+        Account account = new Account();
+        Reflection.reflect(account.getClass());
 
     }
 

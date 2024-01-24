@@ -21,6 +21,8 @@ Week 2 exercises: Write a tool that allows testing the entire project
 
 ### 3. Exercises 3: Use java reflection to read the structure of any class(built javafile) file
 
+![img_1.png](assets/exercises3.png)
+
 ## 4. Tools
 
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/)
