@@ -6,35 +6,22 @@ Subject: Kiến trúc và Thiết kế phần mềm
 
 #### Description
 
-Week 1 exercises: UML diagram for ATM application
+Week 2 exercises: Write a tool that allows testing the entire project
 
-### 1.Usecase diagram
+### 1.Exercises 1: Read a java source file, extract(fields, methods(include parametters))
 
-![img.png](assets/UseCase.png)
+![img.png](assets/exercises1.png)
 
-### 2. Actitivy diagram
+### 2. Exercises 2:Give a folder, scan all java files(include nested folder) perform actions in exercises 1
 
-![img_1.png](assets/Activity.png)
+![img_1.png](assets/exercises2_1.png)
+![img_1.png](assets/exercises2_2.png)
 
-### 3. Sequence diagram
+### 3. Exercises 3: Use java reflection to read the structure of any class(built javafile) file
 
-![img_1.png](assets/Activity.png)
+## 4. Tools
 
-### 4. Component diagram
-
-![img_1.png](assets/Component.png)
-
-### 5 Statechart diagram
-
-![img_1.png](assets/StateChart.png)
-
-### 6. Class diagram
-
-![img_1.png](assets/Class.png)
-
-## 6. Tools
-
-- [Enterprise Architect](https://sparxsystems.com/)
-  ![img_1.png](assets/tool)
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+  ![img_1.png](assets/logo)
 
 # Cảm ơn thầy đã ghé thăm dự án của em :heart:
