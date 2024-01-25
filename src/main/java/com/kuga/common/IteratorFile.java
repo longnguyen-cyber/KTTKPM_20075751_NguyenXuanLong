@@ -14,12 +14,6 @@ import java.util.Optional;
 
 public class IteratorFile {
     public static void processFiles(File file) {
-        System.out.println("\n");
-        System.out.println("Directory folder ");
-        new DirExplorer((level, path, f) -> path.endsWith(".java"), (level, path, f) -> {
-            System.out.println("Level: " + level + " Path: " + path + " File: " + f.getName());
-        }).explore(file);
-        System.out.println("\n");
 
         if (file.isDirectory()) {
             File[] files = file.listFiles();

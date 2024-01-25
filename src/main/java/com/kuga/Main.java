@@ -18,10 +18,10 @@ public class Main {
         //Câu 1
 //        processFile();
         //Câu 2
-//		processFolder();
+		processFolder();
         //Câu 3
         Account account = new Account();
-        Reflection.reflect(account.getClass());
+//        Reflection.reflect(account.getClass());
 
     }
 
