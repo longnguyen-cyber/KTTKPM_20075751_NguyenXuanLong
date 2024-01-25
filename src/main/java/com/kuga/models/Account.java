@@ -2,10 +2,11 @@ package com.kuga.models;
 
 // comment this class
 
-/*
-* Author: Kuga
-* created-dates: 01/24/2024
-* */
+/**
+ * @created-date 2021-10-14
+ * @author longnguyen
+ * */
+
 
 public class Account {
 	private String name;
@@ -36,6 +37,10 @@ public class Account {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Account [name=" + name + ", email=" + email + "]";
+	}
 	
 }

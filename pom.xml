@@ -13,6 +13,14 @@
             <artifactId>javaparser-core</artifactId>
             <version>3.25.8</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>32.1.3-jre</version>
+        </dependency>
+
     </dependencies>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

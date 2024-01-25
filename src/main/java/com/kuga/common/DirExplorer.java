@@ -1,11 +1,12 @@
 package com.kuga.common;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public class DirExplorer {
     // interface for file handler
     public interface FileHandler {
-        void handle(int level, String path, File file);
+        void handle(int level, String path, File file) throws FileNotFoundException;
     }
     // interface for file filter
     public interface Filter {
@@ -27,7 +28,11 @@ public class DirExplorer {
             }
         } else {
             if (filter.interested(level, path, file)) {
-                fileHandler.handle(level, path, file);
+                try {
+                    fileHandler.handle(level, path, file);
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
