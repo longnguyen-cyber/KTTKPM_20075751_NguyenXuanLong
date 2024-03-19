@@ -14,8 +14,10 @@ Visualizing distance from the main sequence and other Clean Architecture metrics
 
 - Step 1: Download jdepend-2.1.0.jar and put to folder libs of java project(exercise project)
   [Download jdepend-2.1.0.jar](https://github.com/clarkware/jdepend/tree/master/dist)
+
   Note: The library will be in this path
   ![img_1.png](assets/lib.png)
+
 - Step 2: Implement jdepend-2.1.0.jar to build.gradle file
 
 ```java
