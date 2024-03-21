@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt Hàng Online </title>
+</head>
+
+<body>
+<a href="/" style="margin-right: 50px">Đặt Hàng Online </a>
+<a href="/product">Bảng Sản Phẩm</a>
+<h1> Đặt Hàng Online </h1>
+<form action="/order/add" enctype="multipart/form-data" method="post" th:object="${newOrder}">
+    <label> Nhập Tên KH:</label>
+    <input placeholder="Nhập Họ Tên KH : " required th:field="*{customerName}" type="text"> <br> <br>
+    <label> Nhập Sản Phẩm Đặt:</label>
+    <select name="productId">
+        <option th:each="product : ${listProduct}"
+                th:text="${product.name}"
+                th:value="${product.id}">
+        </option>
+    </select>
+    <br>
+    <br>
+    <label> Nhập Số Luợng Đặt :</label>
+    <input placeholder="Nhập Số Luợng Đặt :" required th:field="*{quantity_order}" type="number"> <br> <br>
+    <label> Nhập Email :</label>
+    <input placeholder="Nhập Email :" required th:field="*{customerEmail}" type="email"> <br> <br>
+    <input type="submit" value="Đặt Hàng">
+</form>
+
+<br>
+<form action="" enctype="multipart/form-data" method="post">
+
+    <label> Danh Sách Đơn Đặt Hàng </label>
+    <br>
+    <br>
+    <table border="1" style="text-align: center">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên Khách Hàng</th>
+            <th>Email</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Số Lượng Đặt</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="ordered : ${listProductOrdered}">
+            <tr>
+                <td>
+                    <span th:text="${ordered.id}"></span>
+                </td>
+                <td>
+                    <span th:text="${ordered.customerName}"></span>
+                </td>
+                <td>
+                    <span th:text="${ordered.customerEmail}"></span>
+                </td>
+                <td>
+                    <span th:text="${ordered.product.name}"></span>
+                </td>
+                <td>
+                    <span th:text="${ordered.quantity_order}"></span>
+                </td>
+
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</form>
+
+
+</body>
+</html>

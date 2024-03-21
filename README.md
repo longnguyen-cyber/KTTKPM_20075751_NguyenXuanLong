@@ -8,59 +8,76 @@ Subject: Kiến trúc và Thiết kế phần mềm
 
 #### Description
 
-Visualizing distance from the main sequence and other Clean Architecture metrics in Java
+Create a simple Spring Boot application with ActiveMQ and JMS, simulating the product purchasing process
 
-## Step to run
+## Installation
 
-- Step 1: Download jdepend-2.1.0.jar and put to folder libs of java project(exercise project)
-  [Download jdepend-2.1.0.jar](https://github.com/clarkware/jdepend/tree/master/dist)
+- Create simple Spring Boot project with monolithic architecture
+  ![architecture](./assets/init.png)
+- Run database(mariadb)(you can run with Xampp or docker)
+  - docker(use [HeidiSQL](https://www.heidisql.com/download.php) to connect to mariadb)
+  ```bash
+  docker run --name some-mariadb -p 8888:3306 -e MARIADB_ROOT_PASSWORD=yourpassword -d mariadb
+  ```
+  ![docker](./assets/heidisql.png)
+  - Xampp:[Install](https://sourceforge.net/projects/xampp/) and run mariadb
+    ![alt text](./assets/xamppRunning.png)
+- [Install ActiveMQ](https://activemq.apache.org/components/classic/download/) and run in your local path
 
-  Note: The library will be in this path
-  ![img_1.png](assets/lib.png)
+  ```bash
+  C:\apache-activemq-6.1.0\bin\win64\activemq.bat
+  ```
 
-- Step 2: Implement jdepend-2.1.0.jar to build.gradle file
+  ![activemq](./assets/termialActice.png)
+  [ActiveMQ UI running](http://localhost:8161/admin)
+  ![activemq](./assets/ActiveUI.png)
+
+## Usage
+
+- Screen product(add new product and show product)
+  ![product](./assets/product.png)
+- Screen purchase(order and show ordered)
+  ![purchase](./assets/order.png)
+
+When you add a new order, it will be sent to ActiveMQ and the consumer will receive the message, send Email to customer and save it to the database
+![activemq](./assets/message.png)
+
+Payload send to ActiveMQ:
+![activemq](./assets/payload.png)
+Result of payload([Use base64](https://www.convertstring.com/vi/EncodeDecode/Base64Decode))
+![activemq](./assets/decode.png)
+Email customer have received when order success:
+![activemq](./assets/success.png)
+Or when order fail:
+![activemq](./assets/reject.png)
+
+If you dont listen JMS event, the active will keep the message and push to pending message
+![activemq](./assets/pending.png)
 
 ```java
-implementation fileTree(dir: 'libs', include: ['*.jar'])
-```
-
-- Step 3: Write code for export the report of project to xml
-
-```java
-package org.example;
-
-import jdepend.xmlui.JDepend;
-
-import java.io.PrintWriter;
-
-public class Main {
-    public static void main(String[] args) throws Exception{
-        JDepend jdepend = new JDepend(new PrintWriter("reports/report.xml"));
-        jdepend.addDirectory("D:\\code\\KTTKPM_20075751_NguyenXuanLong\\Library-Assistant");
-        jdepend.analyze();
-        System.out.println("Analysis completed");
+  //  @JmsListener(destination = "order")
+  public void receiveMessage(final Message jsonMessage) throws JMSException {
+    if (jsonMessage instanceof TextMessage textMessage) {
+      String jsonListOfProduct = textMessage.getText();
+      processMessage(jsonListOfProduct);
     }
-}
+  }
 ```
 
-- Step 4: Clone JDepend-UI and install library
+## Configuration third-party
 
-```bash
-git clone https://github.com/ValentinaServile/jdepend-ui.git
-cd jdepend-ui
-npm install
-```
+- Setup password when you send email
 
-- Step 5: Run JDepend-UI and this file will be in folder jdepend-ui with name index.html
+  Step 1: Go to [Google Account](https://myaccount.google.com/)
 
-```bash
-npm run jdepend-ui <your-path-to-xml-report> be
-ex: npm run jdepend-ui D:\code\KTTKPM_20075751_NguyenXuanLong\Library-Assistant\reports\report.xml be
-```
+  Step 2: Select Security in the left pane
+  ![security](./assets/security_new.png)
 
-![img_1.png](assets/excute.png)
+  Step 3: Find Verify your identity and select 2-Step Verification
 
-- Step 6: Open index.html file in browser and see the result
-  ![img_1.png](assets/result.png)
+  Step 4: Scroll down and select App passwords
 
-# Cảm ơn thầy đã ghé thăm dự án của em :heart:
+  Step 5: Create new app password and copy your password to application.properties
+  ![app](./assets/pass.png)
+
+# Thank you for visiting my project :heart:
